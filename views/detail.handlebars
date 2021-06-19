@@ -1,4 +1,4 @@
-
+<script src="https://www.mercadopago.com/v2/security.js" view="detail"></script>
 <div class="as-search-wrapper" role="main">
     <div class="as-navtuck-wrapper">
         <div class="as-l-fullwidth  as-navtuck" data-events="event52">
@@ -54,7 +54,7 @@
                                     <div class="clearfix image-list xs-no-js as-util-relatedlink relatedlink" data-relatedlink="6|Powerbeats3 Wireless Earphones - Neighborhood Collection - Brick Red|MPXP2">
                                         <div class="as-tilegallery-element as-image-selected">
                                             <div class=""></div>
-                                            <img src="./assets/003.jpg" class="ir ir item-image as-producttile-image" alt="" width="445" height="445" style="content:-webkit-image-set(url({{ img }}) 2x);">
+                                            <img src="./assets/003.jpg" class="ir ir item-image as-producttile-image" alt="" width="445" height="445" style="content:-webkit-image-set(url({{ articulo.img }}) 2x);">
                                         </div>
                                         
                                     </div>
@@ -72,19 +72,19 @@
                                 <div class="as-producttile-title">
                                     <h3 class="as-producttile-name">
                                         <p class="as-producttile-tilelink">
-                                            <span data-ase-truncate="2"> {{ title }} </span>
+                                            <span data-ase-truncate="2"> {{ articulo.title }} </span>
                                         </p>
 
                                     </h3>
                                 </div>
                                 <h3 >
-                                    {{ price }}
+                                    {{ articulo.price }}
                                 </h3>
                                 <h3 >
-                                    {{ unit }}
+                                    {{ articulo.unit }}
                                 </h3>
                             </div>
-                            <button type="submit" class="mercadopago-button" formmethod="post">Pagar</button>
+                            <a href="{{init_point}}" target="_blank">Pagar la compra</a>
                         </div>
                     </div>
                 </div>
@@ -93,3 +93,17 @@
     </div>
 </div>
    
+<script src="https://sdk.mercadopago.com/js/v2"></script>
+<script>
+// Agrega credenciales de SDK
+  const mp = new MercadoPago('APP_USR-7eb0138a-189f-4bec-87d1-c0504ead5626', {
+        locale: 'es-AR'
+  });
+
+  // Inicializa el checkout
+  mp.checkout({
+      preference: {
+          id: '{{ id_preference }}'
+      }
+});
+</script>
