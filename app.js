@@ -23,6 +23,7 @@ app.get('/', function (req, res) {
 });
 
 app.get('/detail', function (req, res) {
+  console.log(req.query.img);
     let preference = {
         items: [
           {
@@ -30,7 +31,8 @@ app.get('/detail', function (req, res) {
             title: req.query.title,
             unit_price: parseInt(req.query.price),
             quantity: parseInt(req.query.unit),
-            picture_url: req.query.img
+            picture_url: URL_PROD + req.query.img.substring(2),
+            description: "Dispositivo móvil de Tienda e-commerce",
           }
         ],
         payer: {
@@ -44,7 +46,7 @@ app.get('/detail', function (req, res) {
             address: {
               street_name: "Falsa",
               street_number: 123,
-              zip_code: "111"
+              zip_code: "1111"
             }
         },
         payment_methods:{
@@ -63,7 +65,7 @@ app.get('/detail', function (req, res) {
         },
         auto_return: "approved",
         external_reference: "albruni309@hotmail.com",
-        notification_url: "http://c3c65320495d.ngrok.io/notifications"
+        notification_url: "http://e501bfbe8491.ngrok.io/notifications"
       };
       
       mercadopago.preferences.create(preference)
